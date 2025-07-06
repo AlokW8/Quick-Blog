@@ -41,15 +41,17 @@ const Header = () => {
         transition={{ duration: 1 }}
       >
         {/* Badge */}
-        <motion.div
-          className="inline-flex items-center gap-3 px-5 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm text-white backdrop-blur-md shadow-md"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          <p>✨ New AI feature Integrated</p>
-          <img src={assets.star_icon} className="w-3" alt="Star" />
-        </motion.div>
+       <motion.div
+  className="inline-flex flex-col items-center gap-1 px-5 py-1.5 bg-white/10 border border-white/20 rounded-full text-sm text-white backdrop-blur-md shadow-md"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ delay: 0.3 }}
+>
+  
+  <p>✨ New AI feature Integrated  +</p>
+  <p className='text-md'>Now with Blogger! 🚀</p>
+</motion.div>
+
 
         {/* Title */}
         <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight flex justify-center flex-wrap gap-1">

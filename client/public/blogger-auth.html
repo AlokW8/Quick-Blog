@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Posting to Blogger...</title></head>
+  <body>
+    <h2>Posting to Blogger...</h2>
+    <script>
+      const title = localStorage.getItem("ai-blog-title");
+      const content = localStorage.getItem("ai-blog-content");
+
+      fetch("http://localhost:3000/api/blog/publish-to-blogger", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, content })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert(data.message || "Posted successfully!");
+        window.location.href = "/";
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Failed to publish post.");
+        window.location.href = "/";
+      });
+    </script>
+  </body>
+</html>

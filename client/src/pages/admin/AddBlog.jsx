@@ -4,6 +4,7 @@ import Quill from 'quill';
 import { useAppContext } from '../../context/AppContext';
 import toast from 'react-hot-toast';
 import { parse } from 'marked';
+import { motion } from 'framer-motion';
 
 const AddBlog = () => {
   const { axios } = useAppContext();
@@ -64,6 +65,19 @@ const AddBlog = () => {
       setIsAdding(false);
     }
   };
+
+const handlePostToBlogger = () => {
+  const blogTitle = title;
+  const blogContent = quillRef.current.root.innerHTML;
+
+  // Set cookies that will be sent with the redirect
+  document.cookie = `ai-blog-title=${encodeURIComponent(blogTitle)}; path=/; max-age=300`; // 5min expiry
+  document.cookie = `ai-blog-content=${encodeURIComponent(blogContent)}; path=/; max-age=300`;
+
+  // Redirect to start OAuth
+  window.location.href = "http://localhost:3000/api/blog/blogger-auth";
+};
+
 
   useEffect(() => {
     if (!quillRef.current && editorRef.current) {
@@ -126,6 +140,23 @@ const AddBlog = () => {
             Generate with AI
           </button>
         </div>
+
+     
+
+<button
+  type="button"
+  onClick={handlePostToBlogger}
+  className="glow-on-hover mt-6 mb-6"
+>
+  Post on Blogger
+</button>
+
+
+
+
+
+
+
 
         <label className="block text-sm text-gray-600 font-medium mb-1">Category</label>
         <select
