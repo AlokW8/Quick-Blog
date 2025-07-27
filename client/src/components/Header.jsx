@@ -49,7 +49,6 @@ const Header = () => {
 >
   
   <p>✨ New AI feature Integrated  +</p>
-  <p className='text-md'>Now with Blogger! 🚀</p>
 </motion.div>
 
 

@@ -67,17 +67,18 @@ const AddBlog = () => {
   };
 
 const handlePostToBlogger = () => {
-  const blogTitle = title;
-  const blogContent = quillRef.current.root.innerHTML;
+  const blogTitle = encodeURIComponent(title);
+  const blogContent = encodeURIComponent(quillRef.current.root.innerHTML);
 
-  // Set cookies that will be sent with the redirect
-  document.cookie = `ai-blog-title=${encodeURIComponent(blogTitle)}; path=/; max-age=300`; // 5min expiry
-  document.cookie = `ai-blog-content=${encodeURIComponent(blogContent)}; path=/; max-age=300`;
+  // Set cookies with proper SameSite and Secure attributes
+  const cookieSettings = `path=/; max-age=300; ${window.location.protocol === 'https:' ? 'Secure; SameSite=None' : 'SameSite=Lax'}`;
+  
+  document.cookie = `ai-blog-title=${blogTitle}; ${cookieSettings}`;
+  document.cookie = `ai-blog-content=${blogContent}; ${cookieSettings}`;
 
   // Redirect to start OAuth
-  window.location.href = "http://localhost:3000/api/blog/blogger-auth";
+  window.location.href = "/api/blog/blogger-auth";
 };
-
 
   useEffect(() => {
     if (!quillRef.current && editorRef.current) {
@@ -143,13 +144,7 @@ const handlePostToBlogger = () => {
 
      
 
-<button
-  type="button"
-  onClick={handlePostToBlogger}
-  className="glow-on-hover mt-6 mb-6"
->
-  Post on Blogger
-</button>
+
 
 
 

@@ -20,12 +20,7 @@ const Footer = () => {
           whileHover={{ scale: 1.02 }}
           transition={{ type: 'spring', stiffness: 100 }}
         >
-          <motion.img
-            src={assets.logo}
-            alt="logo"
-            className="w-32 sm:w-44 mb-4"
-            whileHover={{ scale: 1.05 }}
-          />
+         
           <p className="max-w-[410px] leading-relaxed text-sm sm:text-base">
             An innovative blogging site that uses artificial intelligence to help users create, edit,
             and optimize content effortlessly. From idea generation to grammar correction and SEO
@@ -69,7 +64,7 @@ const Footer = () => {
         transition={{ delay: 0.3, duration: 0.6 }}
         viewport={{ once: true }}
       >
-        © 2025 QuickBlog – Alok. All Rights Reserved.
+        © 2025 Writely – Alok. All Rights Reserved.
       </motion.p>
     </motion.div>
   );

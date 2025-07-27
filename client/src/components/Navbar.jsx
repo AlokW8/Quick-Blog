@@ -13,17 +13,18 @@ const Navbar = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Logo with hover animation */}
-      <motion.img
-        src={assets.logo}
-        alt="logo"
-        className="w-32 sm:w-34"
+      {/* Left Side - Logo */}
+      <motion.div
         onClick={() => navigate('/')}
+        className="flex items-center gap-2"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-      />
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
+        
+      </motion.div>
 
-      {/* Login/Dashboard Button with animation */}
+      {/* Right Side - Login/Dashboard Button */}
       <motion.button
         onClick={() => navigate('/admin')}
         className="flex items-center gap-2 rounded-full text-sm cursor-pointer 
